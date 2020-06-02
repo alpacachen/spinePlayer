@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spinePlayer</title>
+    <script src="../SpinePlayer3_7.js"></script>
+    <script src="../SpinePlayer3_8.js"></script>
+    <style>
+        .dev{
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dev" id="3-7">3.7</div>
+    <div class="dev" id="3-8">3.8</div>
+</body>
+<script>
+    let spine3_7 = {"png":"https://qnyedu-hz.cdn.ipalfish.com/edu/c/spine/4edfacc16e591766e6823c93e2cdcfe1.png","json":"https://qnyedu-hz.cdn.ipalfish.com/edu/c/spine/c364f15d96e3e865a40948f14530a10e.json","atlas":"https://qnyedu-hz.cdn.ipalfish.com/edu/c/spine/b8e08876829123eed516465db61c4bdc.atlas"}
+    let spine3_8 = {"png":"https://qnyedu-hz.cdn.ipalfish.com/edu/test/5ebe2ed8a166ad042e6534461667af47.png","json":"https://qnyedu-hz.cdn.ipalfish.com/edu/test/33e018e05e9a801a21af35f1be887a00.json","atlas":"https://qnyedu-hz.cdn.ipalfish.com/edu/test/bb870c027a9b45d4e7171312937615d4.atlas"}
+    let a = new window.SpinePlayer3_7({
+        parent: document.getElementById('3-7'),
+        pngUrl:spine3_7.png,
+        atlasUrl:spine3_7.atlas,
+        jsonUrl:spine3_7.json
+    })
+    a.on('loaded',()=>{
+        a.play('2')
+    })
+    let b = new window.SpinePlayer3_8({
+        parent: document.getElementById('3-8'),
+        pngUrl:spine3_8.png,
+        atlasUrl:spine3_8.atlas,
+        jsonUrl:spine3_8.json
+    })
+    b.on('loaded',()=>{
+        b.play('1')
+    })
+</script>
+</html>
