@@ -68,19 +68,4 @@ export default class SpinePlayer3_7 extends Base{
         this.skeleton.getBounds(offset, this.bounds, []);
         this.eventList['loaded']();
     }
-    render() {
-        this.timeKeeper.update();
-        let delta = this.timeKeeper.delta;
-
-        this.state.update(delta);
-        this.state.apply(this.skeleton);
-        this.skeleton.updateWorldTransform();
-        this.renderer.camera.viewportWidth = this.bounds.x * 1.5;
-        this.renderer.camera.viewportHeight = this.bounds.y * 1.5;
-        this.renderer.resize(spine.webgl.ResizeMode.Fit);
-        this.renderer.begin();
-        this.renderer.drawSkeleton(this.skeleton, true);
-        
-        this.renderer.end();
-    }
 }

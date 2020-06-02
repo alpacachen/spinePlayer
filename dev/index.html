@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>spinePlayer</title>
+    <title>spinePlaye11r</title>
     <script src="../SpinePlayer3_7.js"></script>
     <script src="../SpinePlayer3_8.js"></script>
     <style>
@@ -17,8 +17,10 @@
 <body>
     <div class="dev" id="3-7">3.7</div>
     <div class="dev" id="3-8">3.8</div>
+    <button onclick="pause()">pause</button>
 </body>
 <script>
+    let isPlaying = true;
     let spine3_7 = {"png":"https://qnyedu-hz.cdn.ipalfish.com/edu/c/spine/4edfacc16e591766e6823c93e2cdcfe1.png","json":"https://qnyedu-hz.cdn.ipalfish.com/edu/c/spine/c364f15d96e3e865a40948f14530a10e.json","atlas":"https://qnyedu-hz.cdn.ipalfish.com/edu/c/spine/b8e08876829123eed516465db61c4bdc.atlas"}
     let spine3_8 = {"png":"https://qnyedu-hz.cdn.ipalfish.com/edu/test/5ebe2ed8a166ad042e6534461667af47.png","json":"https://qnyedu-hz.cdn.ipalfish.com/edu/test/33e018e05e9a801a21af35f1be887a00.json","atlas":"https://qnyedu-hz.cdn.ipalfish.com/edu/test/bb870c027a9b45d4e7171312937615d4.atlas"}
     let a = new window.SpinePlayer3_7({
@@ -27,6 +29,17 @@
         atlasUrl:spine3_7.atlas,
         jsonUrl:spine3_7.json
     })
+    function pause(){
+        if(isPlaying){
+            isPlaying = false;
+            a.pause();
+            b.pause();
+        }else{
+            isPlaying = true;
+            a.resume();
+            b.resume();
+        }
+    }
     a.on('loaded',()=>{
         a.play('2')
     })

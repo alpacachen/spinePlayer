@@ -1,3 +1,4 @@
+import spine from './spine-webgl3.8';
 export default class{
     constructor(config){
         this.config = config;
@@ -7,6 +8,7 @@ export default class{
         this.canvas.height = 1;
         this.canvas.style.cssText = 'display:none;width:100%;height:100%;position:absolute';
         this.animationKeys = [];
+        this.isPlaying = true;
     }
     on(key, func) {
         this.eventList[key] = func;
@@ -15,10 +17,32 @@ export default class{
         this.canvas.style.display = 'block';
         this.state.setAnimation(0, name, loop);
     }
+    pause(){
+        this.isPlaying = false;
+    }
+    resume(){
+        this.isPlaying = true;
+    }
     getSize() {
         return this.bounds;
     }
     getAnimationList() {
         return this.animationKeys;
+    }
+    render() {
+        this.timeKeeper.update();
+        let delta = this.timeKeeper.delta;
+        if(this.isPlaying){
+            this.state.update(delta);
+            this.state.apply(this.skeleton);
+            this.skeleton.updateWorldTransform();
+        }
+        this.renderer.camera.viewportWidth = this.bounds.x * 1.5;
+        this.renderer.camera.viewportHeight = this.bounds.y * 1.5;
+        this.renderer.resize(spine.webgl.ResizeMode.Fit);
+        this.renderer.begin();
+        this.renderer.drawSkeleton(this.skeleton, true);
+        
+        this.renderer.end();
     }
 }
