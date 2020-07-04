@@ -3,7 +3,7 @@
 > based on [spineruntimes-ts](https://github.com/EsotericSoftware/spine-runtimes/tree/3.8/spine-ts), include spine ver3.7 and 3.8. UMD package.
 
 ### DEMO
-[Demo](http://www.qwero.cn/index.html#/animate4phaser "")
+[Demo](http://www.qwero.cn/index.html#/spinePlayerPage "")
 
 ### Usage
 ```
