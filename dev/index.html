@@ -15,9 +15,12 @@
     </style>
 </head>
 <body>
-    <div class="dev" id="3-7">3.7</div>
-    <div class="dev" id="3-8">3.8</div>
+    3.7
+    <div class="dev" id="3-7"></div>
+    3.8
+    <div class="dev" id="3-8"></div>
     <button onclick="pause()">pause</button>
+    <button onclick="remove()">remove</button>
 </body>
 <script>
     let isPlaying = true;
@@ -27,9 +30,19 @@
         parent: document.getElementById('3-7'),
         pngUrl:spine3_7.png,
         atlasUrl:spine3_7.atlas,
-        jsonUrl:spine3_7.json
+        jsonUrl:spine3_7.json,
+        reduceFramerate:true,
     })
+    function remove(){
+        if(a && b){
+            a.remove();
+            a = null;
+            b.remove();
+            b = null;
+        }
+    }
     function pause(){
+        console.log(111);
         if(isPlaying){
             isPlaying = false;
             a.pause();
@@ -40,17 +53,12 @@
             b.resume();
         }
     }
-    a.on('loaded',()=>{
-        a.play('2')
-    })
     let b = new window.SpinePlayer3_8({
         parent: document.getElementById('3-8'),
         pngUrl:spine3_8.png,
         atlasUrl:spine3_8.atlas,
-        jsonUrl:spine3_8.json
-    })
-    b.on('loaded',()=>{
-        b.play('1')
+        jsonUrl:spine3_8.json,
+        reduceFramerate:true,
     })
 </script>
 </html>

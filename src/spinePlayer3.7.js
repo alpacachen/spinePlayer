@@ -31,10 +31,6 @@ export default class SpinePlayer3_7 extends Base{
         this.assetManager.loadJson(this.DEMO_NAME, jsonUrl);
         this.timeKeeper = new spine.TimeKeeper();
     }
-    loop() {
-        requestAnimationFrame(this.loop.bind(this));
-        this.renderDemo();
-    }
     renderDemo() {
         const { parent } = this.config;
         if (this.canvas.parentElement != parent) {
@@ -66,6 +62,8 @@ export default class SpinePlayer3_7 extends Base{
         let offset = new spine.Vector2();
         this.bounds = new spine.Vector2();
         this.skeleton.getBounds(offset, this.bounds, []);
-        this.eventList['loaded']();
+        if(this.eventList['loaded']){
+            this.eventList['loaded']();
+        };
     }
 }
