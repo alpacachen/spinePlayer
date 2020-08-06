@@ -4,6 +4,7 @@
 
 ### DEMO
 [Demo](http://www.qwero.cn/index.html#/spinePlayerPage "")
+[Code](https://github.com/alpacachen/qwero/blob/master/src/pages/spineplayer.vue "")
 
 ### Usage
 ```
@@ -15,7 +16,8 @@ let body1 = new Spineplayer3_7({
     parent: parentDom,
     pngUrl:spine3_7.png,
     atlasUrl:spine3_7.atlas,
-    jsonUrl:spine3_7.json
+    jsonUrl:spine3_7.json,
+    reduceFramerate:true,
 })
 body1.on('loaded',()=>{
     console.log(body1.getAnimationList())
@@ -51,4 +53,4 @@ pause
 resume
 
 .getSize()
-return size.
+return size
